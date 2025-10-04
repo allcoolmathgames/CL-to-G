@@ -12,9 +12,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Convertisseur Cl vers G | Accueil</title>
-    <meta name="description" content="Utilisez ce convertisseur Cl vers G pour convertir rapidement votre valeur Cl en G." />
-    <meta name="keywords" content="Convertisseur Cl vers G, conversion Cl en G, outil Cl vers G" />
+    <title>Convertisseur L vers G | Accueil</title>
+    <meta name="description" content="Utilisez ce convertisseur L vers G pour convertir rapidement votre valeur L en G." />
+    <meta name="keywords" content="Convertisseur L vers G, conversion L en G, outil L vers G" />
     <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/png">
     <link rel="canonical" href="https://cl-to-g.info/fr" />
     <link rel="alternate" hreflang="x-default" href="https://cl-to-g.info/" />
@@ -94,9 +94,6 @@
         .faq-item.open .faq-answer {
             max-height: 1000px; /* Large enough to fit any content */
         }
-        .faq-item.open .toggle-icon {
-            transform: rotate(180deg); /* Changed from 0deg to 180deg for consistency */
-        }
         .faq-item:not(.open) .faq-answer {
             max-height: 0;
             overflow: hidden;
@@ -112,18 +109,18 @@
 
     <header class="secondary-header">
         <div class="container">
-            <h1>Convertisseur <strong>Cl</strong> vers <strong>G</strong></h1>
-            <p>Entrez votre valeur en <strong>Cl</strong> pour la convertir rapidement en <strong>G</strong>, en sélectionnant la substance.</p>
+            <h1>Convertisseur <strong>L</strong> vers <strong>G</strong></h1>
+            <p>Entrez votre valeur en <strong>L</strong> pour la convertir rapidement en <strong>G</strong>, en sélectionnant la substance.</p>
         </div>
     </header>
 
     <main class="container main-content">
         <section class="card" id="tool">
-            <h2>Convertir <strong>Cl</strong> en <strong>G</strong></h2>
+            <h2>Convertir <strong>L</strong> en <strong>G</strong></h2>
             <div class="tool-container">
                 <div class="form-group">
-                    <label for="clInput"><strong>Volume (en Cl):</strong></label>
-                    <input type="number" id="clInput" step="any" aria-label="Volume en centilitres" placeholder="Entrez le volume en Cl" required>
+                    <label for="lInput"><strong>Volume (en L):</strong></label>
+                    <input type="number" id="lInput" step="any" aria-label="Volume en litres" placeholder="Entrez le volume en L" required>
                 </div>
 
                 <div class="form-group">
@@ -222,7 +219,7 @@
                     <input type="number" id="densityInput" step="any" aria-label="Densité en grammes par centimètre cube" placeholder="Entrez la densité en g/cm³" required>
                 </div>
 <br>
-                <button class="btn" onclick="convertClToG()" aria-label="Convertir en grammes"><strong>Convertir en G</strong></button>
+                <button class="btn" onclick="convertLToG()" aria-label="Convertir en grammes"><strong>Convertir en G</strong></button>
             </div>
 
             <p style="color: red;"><strong>Note:</strong> La densité varie avec la température et peut différer selon les marques et les ingrédients. Vous pouvez sélectionner <strong>Autre (Densité personnalisée)</strong> dans la liste déroulante pour entrer votre propre valeur.</p>
@@ -237,44 +234,44 @@
         </section>
 
         <section class="card" id="conversion-info">
-            <h2>Comprendre la Conversion <strong>Cl</strong> vers <strong>G</strong></h2>
-            <p>La conversion de <strong>Cl (Volume)</strong> en <strong>G (Masse)</strong> dépend de la <strong>densité</strong> de la substance. La formule de conversion est :</p>
-            <p>$$ \text{Masse (G)} = \text{Volume (Cl)} \times \text{Densité} $$</p>
+            <h2>Comprendre la Conversion <strong>L</strong> vers <strong>G</strong></h2>
+            <p>La conversion de <strong>L (Volume)</strong> en <strong>G (Masse)</strong> dépend de la <strong>densité</strong> de la substance. La formule de conversion est :</p>
+            <p>$$ \text{Masse (G)} = \text{Volume (L)} \times \text{Densité} $$</p>
             <p>Dans ce calculateur, nous supposons que :</p>
-            <p>1. <strong>Cl</strong> est une unité de <strong>volume</strong> similaire à `mL` ($\text{1 cL} = \text{10 mL}$).</p>
+            <p>1. <strong>L</strong> est une unité de <strong>volume</strong> similaire à `dm³` ($\text{1 L} = \text{1000 mL}$).</p>
             <p>2. <strong>G</strong> est une unité de <strong>masse</strong> similaire à `g`.</p>
-            <p>3. <strong>La densité est en g/cm³</strong>. Puisque $ \text{1 g/cm³} = \text{1 g/mL}$, et $ \text{1 cL} = \text{10 mL}$, la formule utilisée ici est :</p>
-            <p>$$ \text{Masse (G)} = \text{Volume (cL)} \times \text{Densité (g/mL)} \times 10 $$</p>
+            <p>3. <strong>La densité est en g/cm³</strong>. Puisque $ \text{1 g/cm³} = \text{1 g/mL}$, et $ \text{1 L} = \text{1000 mL}$, la formule utilisée ici est :</p>
+            <p>$$ \text{Masse (G)} = \text{Volume (L)} \times \text{Densité (g/mL)} \times 1000 $$</p>
             <p>Sélectionner une substance met à jour la densité pour un calcul précis.</p>
         </section>
 
         <section class="card" id="how-to-use">
             <h2>Comment Utiliser ce <strong>Convertisseur</strong>?</h2>
             <ul>
-                <li><strong>Entrez la valeur Cl:</strong> Mettez la valeur de volume dans le champ <strong>"Volume (en Cl)"</strong>.</li>
+                <li><strong>Entrez la valeur L:</strong> Mettez la valeur de volume dans le champ <strong>"Volume (en L)"</strong>.</li>
                 <li><strong>Sélectionnez la Substance:</strong> La densité de la substance est cruciale. Choisissez-la dans la liste.</li>
                 <li><strong>Cliquez sur Convertir:</strong> Cliquez sur le bouton <strong>"Convertir en G"</strong>.</li>
-                <li><strong>Obtenez le Résultat:</strong> La masse équivalente en G sera affichée, ainsi que les valeurs incrémentées de **+0.1 Cl** jusqu'à **+0.9 Cl**.</li>
+                <li><strong>Obtenez le Résultat:</strong> La masse équivalente en G sera affichée, ainsi que les valeurs incrémentées de **+0.1 L** jusqu'à **+0.9 L**.</li>
             </ul>
         </section>
 
         <section class="card" id="example">
             <h3><strong>Exemple:</strong></h3>
-            <p>Convertir <strong>5 Cl d'Eau</strong>. La densité de l'eau est environ <strong>1.0 g/cm³</strong> (ou $1.0 \text{ g/mL}$).</p>
-            <p>$$ \text{Masse (g)} = 5 \text{ cL} \times (1.0 \text{ g/mL} \times 10 \text{ mL/cL}) = 50 \text{ g} $$</p>
-            <p>Le résultat pour l'eau est: <strong>$5 \text{ Cl} = 50 \text{ G}$</strong></p>
-            <p>Et pour $5.1 \text{ Cl}$ d'eau: $$ \text{Masse (g)} = 5.1 \text{ cL} \times (1.0 \text{ g/mL} \times 10 \text{ mL/cL}) = 51 \text{ g} $$</p>
+            <p>Convertir <strong>0.5 L d'Eau</strong>. La densité de l'eau est environ <strong>1.0 g/cm³</strong> (ou $1.0 \text{ g/mL}$).</p>
+            <p>$$ \text{Masse (g)} = 0.5 \text{ L} \times (1.0 \text{ g/mL} \times 1000 \text{ mL/L}) = 500 \text{ g} $$</p>
+            <p>Le résultat pour l'eau est: <strong>$0.5 \text{ L} = 500 \text{ G}$</strong></p>
+            <p>Et pour $0.6 \text{ L}$ d'eau: $$ \text{Masse (g)} = 0.6 \text{ L} \times (1.0 \text{ g/mL} \times 1000 \text{ mL/L}) = 600 \text{ g} $$</p>
         </section>
 
         <section class="card" id="faq">
             <h2>Questions Fréquemment Posées</h2>
             <div class="faq-item open">
                 <div class="faq-question" onclick="toggleFAQ(this)" aria-expanded="true" role="button">
-                    <h4>Q: Est-ce que <strong>1 Cl</strong> est égal à <strong>1 G</strong>?</h4>
+                    <h4>Q: Est-ce que <strong>1 L</strong> est égal à <strong>1 G</strong>?</h4>
                     <span class="toggle-icon" aria-hidden="true">−</span>
                 </div>
                 <div class="faq-answer">
-                    <p>R: <strong>Non</strong>. Le <strong>Cl</strong> est une unité de <strong>volume</strong> et le <strong>G</strong> est une unité de <strong>masse</strong>. Leur conversion dépend entièrement de la <strong>densité</strong> de la substance ($ \text{Masse} = \text{Volume} \times \text{Densité}$).</p>
+                    <p>R: <strong>Non</strong>. Le <strong>L</strong> est une unité de <strong>volume</strong> et le <strong>G</strong> est une unité de <strong>masse</strong>. Leur conversion dépend entièrement de la <strong>densité</strong> de la substance ($ \text{Masse} = \text{Volume} \times \text{Densité} $).</p>
                 </div>
             </div>
             <div class="faq-item open">
@@ -283,17 +280,17 @@
                     <span class="toggle-icon" aria-hidden="true">−</span>
                 </div>
                 <div class="faq-answer">
-                    <p>R: La densité est fournie en <strong>g/cm³</strong> (grammes par centimètre cube), ce qui est égal à $\text{1 g/mL}$. Puisque $\text{1 cL} = \text{10 mL}$, la densité utilisée est convertie implicitement en $10 \text{ g/cL}$.</p>
+                    <p>R: La densité est fournie en <strong>g/cm³</strong> (grammes par centimètre cube), ce qui est égal à $\text{1 g/mL}$. Puisque $\text{1 L} = \text{1000 mL}$, la densité utilisée est convertie implicitement en $1000 \text{ g/L}$.</p>
                 </div>
             </div>
             <div class="faq-item open">
                 <div class="faq-question" onclick="toggleFAQ(this)" aria-expanded="true" role="button">
-                    <h4>Q: Comment puis-je convertir <strong>10 Cl</strong> de farine tout usage en <strong>G</strong>?</h4>
+                    <h4>Q: Comment puis-je convertir <strong>0.1 L</strong> de farine tout usage en <strong>G</strong>?</h4>
                     <span class="toggle-icon" aria-hidden="true">−</span>
                 </div>
                 <div class="faq-answer">
-                    <p>R: La farine tout usage a une densité d'environ $\text{0.529 g/cm³}$. Le calcul selon la formule $\text{Masse (g)} = \text{Volume (cL)} \times \text{Densité (g/mL)} \times 10$ serait:</p>
-                    <p>$$ \text{Masse (g)} = 10 \text{ cL} \times 0.529 \text{ g/mL} \times 10 = 52.9 \text{ g} $$</p>
+                    <p>R: La farine tout usage a une densité d'environ $\text{0.529 g/cm³}$. Le calcul selon la formule $\text{Masse (g)} = \text{Volume (L)} \times \text{Densité (g/mL)} \times 1000$ serait:</p>
+                    <p>$$ \text{Masse (g)} = 0.1 \text{ L} \times 0.529 \text{ g/mL} \times 1000 = 52.9 \text{ g} $$</p>
                     <p>Le résultat est: <strong>$52.9 \text{ G}$</strong></p>
                 </div>
             </div>
@@ -317,13 +314,13 @@
             const mainSelect = document.getElementById('mainSelect');
             const densityGroup = document.getElementById('densityGroup');
             const densityInput = document.getElementById('densityInput');
-            const clInput = document.getElementById('clInput');
+            const lInput = document.getElementById('lInput'); // Changed from clInput to lInput
             const mainResultValue = document.getElementById('main-result-value');
             const additionalResultsContainer = document.getElementById('additional-results-container');
 
-            // --- CORE LIVE CALCULATION LOGIC (Moved and refactored) ---
+            // --- CORE LIVE CALCULATION LOGIC (Volume Litres to Grams) ---
             function liveUpdateGrams() {
-                const cl = parseFloat(clInput.value);
+                const litres = parseFloat(lInput.value); // Use lInput
                 let density_g_per_mL = parseFloat(densityInput.value);
 
                 // Reset containers
@@ -344,32 +341,33 @@
                     return;
                 }
 
-                if (isNaN(cl) || cl <= 0) {
+                if (isNaN(litres) || litres <= 0) { // Check for litres
                     mainResultValue.innerHTML = 'Veuillez <strong>entrer un volume positif valide</strong>.';
                     return;
                 }
 
-                // --- Core Calculation ---
-                const calculateGrams = (volumeCl, density) => volumeCl * density * 10;
+                // --- Core Calculation (Mass = Volume L * Density * 1000) ---
+                // 1000 is the factor because 1 L = 1000 mL, and density is in g/mL.
+                const calculateGrams = (volumeL, density) => volumeL * density * 1000;
                 
                 // 2. Calculate and display MAIN result
-                const grams = calculateGrams(cl, density_g_per_mL);
+                const grams = calculateGrams(litres, density_g_per_mL);
                 
                 // Display result using point separator
-                mainResultValue.innerHTML = '<strong>' + formatNumber(cl, 1) + ' Cl</strong> = <strong>' + formatNumber(grams, 3) + ' G</strong>';
+                mainResultValue.innerHTML = '<strong>' + formatNumber(litres, 1) + ' L</strong> = <strong>' + formatNumber(grams, 3) + ' G</strong>';
                 mainResultValue.style.color = 'var(--primary-color)';
 
-                // 3. Calculate and display ADDITIONAL results (CL + 0.1 to CL + 0.9)
+                // 3. Calculate and display ADDITIONAL results (L + 0.1 to L + 0.9)
                 let additionalHTML = '';
                 
                 for (let i = 1; i <= 9; i++) {
                     const increment = i / 10;
-                    const newCl = parseFloat((cl + increment).toFixed(1));
-                    const newGrams = calculateGrams(newCl, density_g_per_mL);
+                    const newLitres = parseFloat((litres + increment).toFixed(1));
+                    const newGrams = calculateGrams(newLitres, density_g_per_mL);
                     
                     additionalHTML += `
                         <span class="additional-result-item">
-                            ${formatNumber(newCl, 1)} Cl = <strong>${formatNumber(newGrams, 3)} G</strong>
+                            ${formatNumber(newLitres, 1)} L = <strong>${formatNumber(newGrams, 3)} G</strong>
                         </span>
                     `;
                 }
@@ -403,28 +401,27 @@
             });
 
             // B. Volume Input listener (Triggers live calculation without scrolling)
-            clInput.addEventListener('input', liveUpdateGrams);
+            lInput.addEventListener('input', liveUpdateGrams); // Use lInput
             
-            // C. Density Input listener (Already added conditionally in A, but added here for safety for non-custom changes)
+            // C. Density Input listener 
             densityInput.addEventListener('input', () => {
                 if (mainSelect.value !== 'custom') {
-                    // This handles manual change of density for a pre-selected item
                     liveUpdateGrams(); 
                 }
             });
 
 
             // D. Button Click Function (Only Scrolls to result)
-            function convertClToG() {
+            function convertLToG() { 
                 // Ensure calculation is run one last time to validate and show final state
                 liveUpdateGrams(); 
                 
                 // Only scroll if calculation was valid
                 const mainSelection = mainSelect.value;
-                const cl = parseFloat(clInput.value);
+                const litres = parseFloat(lInput.value); 
                 const density_g_per_mL = parseFloat(densityInput.value);
 
-                if (mainSelection !== '' && cl > 0 && density_g_per_mL > 0) {
+                if (mainSelection !== '' && litres > 0 && density_g_per_mL > 0) {
                     document.getElementById('result-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             }
@@ -453,7 +450,7 @@
             }
 
             // Expose functions to global scope
-            window.convertClToG = convertClToG;
+            window.convertLToG = convertLToG; 
             window.toggleFAQ = toggleFAQ;
 
             // Initialize all FAQ items as open and set icon

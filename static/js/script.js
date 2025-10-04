@@ -1,24 +1,31 @@
-// ========== CONVERSION FUNCTIONS (CL to G and G to CL) ========== //
+// ========== CONVERSION FUNCTIONS (L to G and G to L) ========== //
 
-// 1. CL to G
-// Formula: Mass (g) = Volume (cL) x Density (g/cL)
-function convertClToG() {
-    const cLInput = document.getElementById('clInput');
+// 1. L to G (Litre to Gram)
+// Formula: Mass (g) = Volume (L) x Density (g/cm³) x 1000 (since 1 L = 1000 cm³)
+function convertLToG() {
+    // Assuming 'lInput' is the ID for the Litre input field
+    const lInput = document.getElementById('lInput');
     const mainSelect = document.getElementById('mainSelect');
     const densityInput = document.getElementById('densityInput');
-    const resultValue = document.getElementById('result-value');
+    // Using main-result-value as per the previous full code
+    const resultValue = document.getElementById('main-result-value'); 
 
-    const cL = parseFloat(cLInput.value);
-    let density;
+    // Check if the input field for L is present on the page (to prevent errors on other pages)
+    if (!lInput) return;
 
-    // Check if the input field for CL is present on the page (to prevent errors on other pages)
-    if (!cLInput) return;
+    const L = parseFloat(lInput.value);
+    let density_g_per_cm3;
 
-    if (mainSelect.value === 'custom') { // Adjusted to 'custom' as per the HTML structure in the previous full code
-        density = parseFloat(densityInput.value);
-    } else {
-        const selectedOption = mainSelect.options[mainSelect.selectedIndex];
-        density = parseFloat(selectedOption.dataset.density);
+    let selectedOption;
+    if (mainSelect.value !== '') {
+        selectedOption = mainSelect.options[mainSelect.selectedIndex];
+    }
+    
+    // Determine density value
+    if (mainSelect.value === 'custom') {
+        density_g_per_cm3 = parseFloat(densityInput.value);
+    } else if (mainSelect.value !== '') {
+        density_g_per_cm3 = parseFloat(selectedOption.dataset.density);
     }
 
     if (mainSelect.value === '') {
@@ -27,42 +34,49 @@ function convertClToG() {
         return;
     }
 
-    if (isNaN(cL) || isNaN(density) || cL <= 0 || density <= 0) {
-        resultValue.innerHTML = "Veuillez entrer des nombres positifs valides pour le volume (cL) et la densité (g/cL).";
+    if (isNaN(L) || isNaN(density_g_per_cm3) || L <= 0 || density_g_per_cm3 <= 0) {
+        resultValue.innerHTML = "Veuillez entrer des nombres positifs valides pour le volume (L) et la densité (g/cm³).";
         resultValue.style.color = "red";
         return;
     }
 
-    // The formula is simple multiplication as units are aligned: Mass (g) = Volume (cL) * Density (g/cL)
-    const grams = cL * density;
-    resultValue.innerHTML = `${cL.toLocaleString('fr-FR')} cL = ${grams.toLocaleString('fr-FR', { maximumFractionDigits: 3 })} g`;
+    // Formula: Mass (g) = Volume (L) * Density (g/cm³) * 1000
+    // 1000 is the conversion factor from L to cm³ (or mL)
+    const grams = L * density_g_per_cm3 * 1000;
+    
+    // Use formatNumber helper from the previous script to ensure correct formatting
+    // For simplicity here, we'll use a direct formatting approach for this function.
+    resultValue.innerHTML = `<strong>${L.toLocaleString('fr-FR', { maximumFractionDigits: 3 })} L</strong> = <strong>${grams.toLocaleString('fr-FR', { maximumFractionDigits: 3 })} G</strong>`;
     resultValue.style.color = "var(--primary-color)";
     document.getElementById('result-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
-// 2. G to CL (Inverse of CL to G)
-// Formula: Volume (cL) = Mass (g) / Density (g/cL)
-function convertGToCl() {
-    // Note: Since only CL to G tool is visible, we are assuming this function will be used on another page.
-    // Reusing the same element IDs for demonstration, assuming the input and output fields are on the G to CL page.
-    
-    // For this demonstration, we are assuming 'clInput' is now 'gInput' and 'result-value' is the same.
-    const gInput = document.getElementById('gInput') || document.getElementById('clInput'); // Using clInput as a placeholder if gInput doesn't exist.
+// 2. G to L (Gram to Litre)
+// Formula: Volume (L) = Mass (g) / (Density (g/cm³) x 1000)
+function convertGToL() {
+    // Assuming 'gInput' is the ID for the Gram input field
+    const gInput = document.getElementById('gInput');
     const mainSelect = document.getElementById('mainSelect');
     const densityInput = document.getElementById('densityInput');
-    const resultValue = document.getElementById('result-value');
-
-    const g = parseFloat(gInput.value);
-    let density;
+    // Using main-result-value as per the previous full code
+    const resultValue = document.getElementById('main-result-value');
 
     // We must ensure the input field exists before proceeding.
     if (!gInput) return; 
 
-    if (mainSelect.value === 'custom') { 
-        density = parseFloat(densityInput.value);
-    } else {
-        const selectedOption = mainSelect.options[mainSelect.selectedIndex];
-        density = parseFloat(selectedOption.dataset.density);
+    const g = parseFloat(gInput.value);
+    let density_g_per_cm3;
+    
+    let selectedOption;
+    if (mainSelect.value !== '') {
+        selectedOption = mainSelect.options[mainSelect.selectedIndex];
+    }
+
+    // Determine density value
+    if (mainSelect.value === 'custom') {
+        density_g_per_cm3 = parseFloat(densityInput.value);
+    } else if (mainSelect.value !== '') {
+        density_g_per_cm3 = parseFloat(selectedOption.dataset.density);
     }
 
     if (mainSelect.value === '') {
@@ -71,15 +85,17 @@ function convertGToCl() {
         return;
     }
 
-    if (isNaN(g) || isNaN(density) || g <= 0 || density <= 0) {
-        resultValue.innerHTML = "Veuillez entrer des nombres positifs valides pour la masse (g) et la densité (g/cL).";
+    if (isNaN(g) || isNaN(density_g_per_cm3) || g <= 0 || density_g_per_cm3 <= 0) {
+        resultValue.innerHTML = "Veuillez entrer des nombres positifs valides pour la masse (G) et la densité (g/cm³).";
         resultValue.style.color = "red";
         return;
     }
 
-    // Formula: Volume (cL) = Mass (g) / Density (g/cL)
-    const cL = g / density;
-    resultValue.innerHTML = `${g.toLocaleString('fr-FR')} g = ${cL.toLocaleString('fr-FR', { maximumFractionDigits: 3 })} cL`;
+    // Formula: Volume (L) = Mass (g) / (Density (g/cm³) * 1000)
+    // 1000 is the conversion factor from cm³ (or mL) to L
+    const L = g / (density_g_per_cm3 * 1000);
+    
+    resultValue.innerHTML = `<strong>${g.toLocaleString('fr-FR', { maximumFractionDigits: 3 })} G</strong> = <strong>${L.toLocaleString('fr-FR', { maximumFractionDigits: 5 })} L</strong>`;
     resultValue.style.color = "var(--primary-color)";
     document.getElementById('result-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
@@ -90,38 +106,66 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainSelect = document.getElementById('mainSelect');
     const densityGroup = document.getElementById('densityGroup');
     const densityInput = document.getElementById('densityInput');
+    
+    // Check if the conversion functions are present (for live update logic)
+    const isLToGPage = document.getElementById('lInput');
+    const isGToLPage = document.getElementById('gInput');
 
     // This section is for all pages that have a 'mainSelect' dropdown and a 'densityGroup'
     if (mainSelect && densityGroup) {
+        
+        // Helper function to trigger the appropriate conversion based on the current page
+        const triggerConversion = () => {
+            if (isLToGPage) {
+                // Check if the function exists before calling (safer in a real environment)
+                if (typeof convertLToG === 'function') convertLToG(); 
+            } else if (isGToLPage) {
+                if (typeof convertGToL === 'function') convertGToL();
+            }
+        };
+
         mainSelect.addEventListener('change', () => {
             const selectedValue = mainSelect.value;
             const selectedOption = mainSelect.options[mainSelect.selectedIndex];
-            // Use the data-density attribute which is expected to be g/cm³ (same as g/mL)
-            // For cL, we are now assuming this data is g/cL, which means the numerical value should be 10 times the g/mL density.
-            // Since the user defined the formula and we can't change the data values, we must assume the existing data-density is g/cL.
             const density = selectedOption.dataset.density; 
 
             densityGroup.classList.add('hidden');
             densityInput.value = '';
-            densityInput.readOnly = false; // By default, set to editable
+            densityInput.readOnly = false; 
 
-            if (selectedValue === 'custom') { // Adjusted to 'custom'
+            if (selectedValue === 'custom') { 
                 densityGroup.classList.remove('hidden');
-                densityInput.placeholder = 'Entrez la densité personnalisée (g/cL)'; // Updated placeholder
+                // Updated placeholder to reflect L/G page unit assumption (g/cm³ or g/mL)
+                densityInput.placeholder = 'Entrez la densité personnalisée (g/cm³ ou g/mL)'; 
             } else if (selectedValue) {
                 if (density) {
                     densityInput.value = density;
                     densityGroup.classList.remove('hidden');
-                    densityInput.readOnly = true; // Make it read-only for pre-filled values
+                    densityInput.readOnly = true; 
                 }
+                // Trigger conversion immediately after selecting a pre-set substance
+                triggerConversion(); 
+            } else {
+                // If '--Select...' is chosen, trigger conversion to show error/reset
+                triggerConversion(); 
             }
         });
+
+        // Add input listeners for live updates (if needed)
+        const inputField = isLToGPage ? document.getElementById('lInput') : document.getElementById('gInput');
+        if (inputField) {
+            inputField.addEventListener('input', triggerConversion);
+        }
+        
+        densityInput.addEventListener('input', () => {
+             if (mainSelect.value === 'custom') {
+                 triggerConversion();
+             }
+        });
     }
-    
-    // NOTE: Saare Medication aur dusre handlers yahan se remove kar diye gaye hain.
 });
 
-// ========== FAQ TOGGLE ========== //
+// ========== FAQ TOGGLE (No change needed) ========== //
 function toggleFAQ(element) {
     const faqItem = element.closest('.faq-item');
     const answer = faqItem.querySelector('.faq-answer');
@@ -131,7 +175,8 @@ function toggleFAQ(element) {
         answer.style.maxHeight = '0';
         icon.textContent = '+';
     } else {
-        answer.style.maxHeight = answer.scrollHeight + 'px';
+        // Set max height dynamically for transition
+        answer.style.maxHeight = answer.scrollHeight + 'px'; 
         icon.textContent = '-';
     }
 }
