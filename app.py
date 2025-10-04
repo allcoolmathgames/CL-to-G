@@ -125,6 +125,7 @@ def render_page(lang_code, page):
         # --- TOOL PAGES ---
         'cl-to-g': 'cl-to-g/cl-to-g',
         'g-to-cl': 'g-to-cl/g-to-cl',
+        'l-to-kg': 'l-to-kg/l-to-kg',
     }
     
     base_path = page_map.get(page)
