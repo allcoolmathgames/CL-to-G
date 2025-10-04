@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="{{ lang_code }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow"> 
+    <title>Cl to G Conversion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base styles */
+:root {
+    --primary-color: #D96A2B; /* Warm Burnt Orange */
+    --secondary-color: #5A8D8D; /* Muted Teal/Sage Green */
+    --accent-color: #E8B94B; /* Goldenrod Yellow */
+    --background-color: #F8F5F1; /* Very Light Beige/Cream */
+    --card-background: #FFFFFF;
+    --text-color: #3C2A20; /* Dark Brown/Coffee Color */
+    --light-text-color: #8C7B71; /* Lighter Earth Tone */
+    --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.08); /* Adjusted shadow */
+    --shadow-medium: 0 10px 25px rgba(0, 0, 0, 0.15); /* Adjusted shadow */
+    --border-radius-base: 8px; /* Slightly rounded for an organic feel */
+}
+        body.dark-mode {
+            --background-color: #121212;
+            --card-background: #1e1e1e;
+            --text-color: #e0e0e0;
+            --light-text-color: #b0b0b0;
+            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.5);
+            --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.6);
+            --primary-color: #72B9EF;
+        }
+
+        /* Main Header Styling */
+        .main-header {
+            background-color: var(--card-background);
+            box-shadow: var(--shadow-light);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        /* Navigation Links */
+        .nav-links ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links li {
+            position: relative;
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--light-text-color);
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links .active-link {
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--card-background);
+            box-shadow: var(--shadow-medium);
+            border-radius: 8px;
+            min-width: 160px;
+            z-index: 1;
+            padding: 10px 0;
+            top: 100%;
+            left: 0;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-content a {
+            color: var(--text-color);
+            padding: 12px 16px;
+            display: block;
+            text-align: left;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* PC view hover logic */
+        @media (min-width: 769px) {
+            .dropdown:hover .dropdown-content,
+            .lang-dropdown:hover .lang-dropdown-content {
+                display: block;
+            }
+        }
+
+        /* Utility Switchers */
+        .language-switcher, .mode-switcher {
+            padding: 8px;
+            border: 1px solid var(--light-text-color);
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+        
+        .language-switcher:hover, .mode-switcher:hover {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Language Dropdown */
+        .lang-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--card-background);
+            box-shadow: var(--shadow-medium);
+            border-radius: 8px;
+            min-width: 160px;
+            z-index: 1;
+            padding: 10px 0;
+            top: 100%;
+            right: 0;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-dropdown-content a {
+            color: var(--text-color);
+            padding: 12px 16px;
+            display: block;
+            text-align: left;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .lang-dropdown-content a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .lang-dropdown-content .active-lang {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* Flag styles */
+        .lang-dropdown-content a span {
+            margin-right: 8px;
+        }
+
+        /* Flag icons */
+        .flag-icon {
+            display: inline-block;
+            width: 1.2em; /* Adjust as needed */
+            height: 0.8em; /* Adjust as needed */
+            background-size: cover;
+            background-position: center;
+            margin-right: 5px;
+            border: 1px solid #ccc; /* Optional: for better visibility of flags */
+        }
+        .flag-fr { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5IDYiPgogIDxwYXRoIGZpbGw9IiNlMTVkMTUiIGQ9Ik0wLDBoM3Y2SDB6Ii8+CiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTMsMGgzdjZIM3oiLz4KICA8cGF0aCBmaWxsPSIjMDA3NGEyIiBkPSJNNiwwaDMvNkg2eiIvPgo8L3N2ZyI+'); }
+        .flag-gb { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+CiAgPHBhdGggZmlsbD0iIzAwMiQ3YyIgZD0iTTAsMEg2MFYzMEgwVjB6Ii8+CiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAuMiwwTDU5LjgsMzBIMzAuOFYzMFogNTkuNSwwVjBWMjkuN0wwLjUsMFoiLz4KICA8cGF0aCBmaWxsPSIjY2YxNDJiIiBkPSJNMzAsMEgzMFYxNUgzME0wLDE1VjE1aDBVMEgzMFYwWm0wLDE1aDBWMTVIODBWMzBaIi8+CiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE2LDE1VjExLjVIMzBWMEg2MFYwVjIwSDRWMThIMjBWMzBaIi8+CiAgPHBhdGggZmlsbD0iI2NmMTQyYiIgZD0iTTE5LDJIMTFWMjIuNUw1OC41LDRWMEwxOSwxNlYzMEgxMVYwTDIuNSwzMkg0OHYwTDExLDUuNVYxNFoiLz4KPC9zdmc+'); }
+        .flag-es { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMCA2Ij4KICA8cGF0aCBmaWxsPSIjYmQzZTM5IiBkPSJNMzAsMEgzMFYxNUgzME0wLDE1VjE1aDBWMEgzMFYwWm0wLDE1aDBWMTVIODBWMzBaIi8+CiAgPHBhdGggZmlsbD0iI2ZmZGEwMCIgZD0iTTEwLDFINjBWNS4wMjYzNDIzMzYxNkgwVjF6Ii8+CiAgPHBhdGggZmlsbD0iI2JkM2UzOSIgZD0iTTEwLDBINjBWNi4wNTI2ODQ2NzIyMzI0SDBWMHoiLz4KICA8cGF0aCBmaWxsPSIjYmQzZTM5IiBkPSJNMzAsMEgzMFYxNUgzME0wLDE1VjE1aDBWMEgzMFYwWm0wLDE1aDBWMTVIODBWMzBaIi8+CiAgPHBhdGggZmlsbD0iI2ZmZGEwMCIgZD0iTTEwLDFINjBWNS4wMjYzNDIzMzYxNkgwVjF6Ii8+CiAgPHBhdGggZmlsbD0iI2JkM2UzOSIgZD0iTTEwLDBINjBWNi4wNTI2ODQ2NzIyMzI0SDBWMHoiLz4KICA8cGF0aCBmaWxsPSIjYmQzZTM5IiBkPSJNMzAsMEgzMFYxNUgzME0wLDE1VjE1aDBWMEgzMFYwWm0wLDE1aDBWMTVIODBWMzBaIi8+CiAgPHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoLjAxMDI5NzQ1NTE0Njg3MzcsMCAwLC4wMTQ1MzQ1NjM3MDk0MjQ2LDQuOTgwMzg3MTU3MzE1MTg5NSwyLjkwNjM2NTczNzA2NjQ5NjMpIiBmaWxsPSIjZmZkYTAwIiBkPSJNMjQ1LDE0NzYgMjI3NywxNDc2IExyNzUsLTE0NzYgMi01MDQgcTk3OCwzNzYgMjk1NSwzOTIgcTI1MzgsMjUgMzA4NSwtMjg1IC02ODUsMTEwIC0zMTU3LC01MCBUMjQ1LDE0NzZ6Ii8+CiAgPHBhdGggdHJhbnNmb3JtPSJtYXRyaXgoLjAxMDI5NzQ1NTE0Njg3MzcsMCAwLC4wMTQ1MzQ1NjM3MDk0MjQ2LDQuOTgwMzg3MTU3MzE1MTg5NSwyLjkwNjM2NTczNzA2NjQ5NjMpIiBmaWxsPSIjYmQzZTM5IiBkPSJNMjkzLDE1MTkgNTc1LDE0NzYgTDE0OTIsMTY2NCAtNTYsMTY1NCBMMTI2LDE1MDQgTDE1NCwxNDc2eiIvPgo8L3N2Zy4='); }
+        .flag-it { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDQiPgogIDxwYXRoIGZpbGw9IiMwMDk5NDkiIGQ9Ik0wLDBoMnY0SDB6Ii8+CiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTIsMGgxdjRIMnp6Ii8+CiAgPHBhdGggZmlsbD0iI2QyMjM0YSIgZD0iTTQsMGgydjRINFoiLz4KPC9zdmc+'); }
+        .flag-de { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1IDMiPgogIDxwYXRoIGZpbGw9IiMwMDAiIGQ9Ik0wLDBoNXYxSDB6Ii8+CiAgPHBhdGgGZpbGw9IiNkZDAwMDAiIGQ9Ik0wLjAxMDUyNjMxNTc4MzM2NDUzLDIgSDQuOTg5NDczNjg0MTY2MzU0OFYxSDAuMDEwNTI2MzE1NzgzMzY0NTNWMnp6Ii8+CiAgPHBhdGggZmlsbD0iI2ZmY2MwMCIgZD0iTTAuMDEwNTI2MzE1NzgzMzY0NTMsM0g0Ljk4OTQ3MzY4NDE2NjM1NDhWMkwwLjAxMDUyNjMxNTc4MzM2NDUzVjN6Ii8+Cjwvc3ZnPg=='); }
+        .flag-pt { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1IDM5Ij4KICA8cGF0aCBmaWxsPSIjMDB2NiMiIGQ9Ik0wLDBoNXYzOUgwenoiLz4KICA8cGF0aCBmaWxsPSIjY2YxNDJiIiBkPSJNMzYsMGgxNnYzOUgzNnp6Ii8+CiAgPHBhdGggZD0iTTM1LDUuNkwxNi44NSwxOS41M0wzNSwzMy41IiBmaWxsPSIjRkZDNjAwIi8+CiAgPHBhdGggZD0iTTI2LDEwLjNMMTcuNzUsMTkuNTNMMjYsMjguOCIgZmlsbD0iI0QwREUzOCIvPgogIDxwYXRoIGQ9Ik0zMCwxNC43TDIxLDE5LjUzTDMwLDI0LjMiIGZpbGw9IiM3MjJmNjkiLz4KICA8Y2lyY2xlIGN4PSIxMi43IiBjeT0iMTkuNTMiIHI9IjcuMzkiIGZpbGw9IiMwNDg1MkEiLz4KICA8cGF0aCBkPSJNMTkuMjMsMTkuNTNhNy4zOSw3LjM5LDAsMCwwLTYuNDUsLTguNDYsNEU1LDYwMiwyNzEwIiBmaWxsPSIjRkZDNjAwIi8+CiAgPHBhdGggZD0iTTE4LDE5LjUzYTcuMzkyLDcuMzkyLDAsMCwwLTMuOTgsLTMuNzMsNEU1LDYwMiwyNzEwIiBmaWxsPSIjRDJERTM4Ii8+CiAgPHBhdGggZD0iTTI1LjU1LDE5LjUzYTcuMzksNy4zOSwwLDAsMCwtNC4yNyw0LjQ4LDExLjcxLDExLjcxLDAsMCwwLTIuNDksLTIuNTksNEU1LDYwMiwyNzEwIiBmaWxsPSIjRDZERTM4Ii8+Cjwvc3ZnPg=='); }
+        .flag-pl { background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1IDMiPgogIDxwYXRoIGZpbGw9IiNlOTFlMjEiIGQ9Ik0wLDEuNUg1VjNIMHoiLz4KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMDUuMDAwOTkyMjE5LDFIMHoiLz4KPC9zdmc+'); }
+
+
+        /* Hamburger Menu Icon */
+        .hamburger-menu {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-color);
+            margin-left: 20px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 15px;
+            }
+            
+            .nav-links {
+                display: none;
+                width: 100%;
+                background-color: var(--card-background);
+                box-shadow: var(--shadow-light);
+                flex-direction: column;
+                padding-bottom: 10px;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                transition: all 0.3s ease-in-out;
+                transform: translateY(-10px);
+                opacity: 0;
+                pointer-events: none;
+                overflow-y: auto; /* Enable vertical scroll */
+                max-height: calc(100vh - 60px); /* Max height for scrolling (adjust 60px as needed for header height) */
+            }
+
+            .nav-links.active {
+                display: flex;
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav-links ul {
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+                width: 100%;
+            }
+
+            .nav-links a {
+                padding: 12px 20px;
+                display: block;
+                width: 80%;
+                margin: auto;
+            }
+            
+            /* Mobile dropdowns */
+            .dropdown-content,
+            .lang-dropdown-content {
+                position: static;
+                box-shadow: none;
+                background-color: transparent;
+                padding: 0;
+                border-radius: 0;
+                width: 100%;
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-content,
+            .lang-dropdown.active .lang-dropdown-content {
+                display: block;
+                padding-top: 10px;
+                box-shadow: none;
+            }
+            
+            .dropdown-content a,
+            .lang-dropdown-content a {
+                padding: 8px 16px;
+            }
+
+            .dropdown-content a:hover,
+            .lang-dropdown-content a:hover {
+                background-color: var(--background-color);
+                color: var(--text-color);
+            }
+            
+            /* Disable hover for mobile */
+            .dropdown:hover .dropdown-content,
+            .lang-dropdown:hover .lang-dropdown-content {
+                display: none;
+            }
+            
+            .hamburger-menu {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="main-header">
+    <div class="header-container">
+        <div class="logo">
+            {% if lang_code == 'fr' %}
+                <a href="{{ url_for('home') }}">
+            {% else %}
+                <a href="{{ url_for('localized_home', lang_code=lang_code) }}">
+            {% endif %}
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+                <span>Cl to G Conversion</span>
+            </a>
+        </div>
+        <div class="header-right">
+            <nav class="nav-links" id="navLinks">
+                <ul>
+                    <li>
+                        {% if lang_code == 'fr' %}
+                            <a href="{{ url_for('home') }}" class="{% if current_page_name == 'home' %}active-link{% endif %}">Accueil</a>
+                        {% else %}
+                            <a href="{{ url_for('localized_home', lang_code=lang_code) }}" class="{% if current_page_name == 'home' %}active-link{% endif %}">Accueil</a>
+                        {% endif %}
+                    </li>
+                    <li class="dropdown" onclick="toggleDropdown(event, 'dropdown')">
+                        <a href="/">Convertisseurs ▾</a>
+                        <div class="dropdown-content">
+                            {% if lang_code == 'fr' %}
+                                <a href="{{ url_for('home') }}">Cl vers G</a>
+                                <a href="{{ url_for('default_pages', page='g-to-cl') }}">G vers Cl</a>
+                            {% else %}
+                                <a href="{{ url_for('localized_home', lang_code=lang_code) }}">Cl to G</a>
+                                <a href="{{ url_for('lang_routes.localized_pages', lang_code=lang_code, page='g-to-cl') }}">G to Cl</a>
+                            {% endif %}
+                        </div>
+                    </li>
+                    <li>
+                        {% if lang_code == 'fr' %}
+                            <a href="{{ url_for('default_pages', page='blogs') }}">Blogues</a>
+                        {% else %}
+                            <a href="{{ url_for('lang_routes.localized_pages', lang_code=lang_code, page='blogs') }}">Blogs</a>
+                        {% endif %}
+                    </li>
+                    <li>
+                        {% if lang_code == 'fr' %}
+                            <a href="{{ url_for('default_pages', page='contact') }}">Nous Contacter</a>
+                        {% else %}
+                            <a href="{{ url_for('lang_routes.localized_pages', lang_code=lang_code, page='contact') }}">Contact Us</a>
+                        {% endif %}
+                    </li>
+                    <li class="lang-dropdown" onclick="toggleDropdown(event, 'lang-dropdown')">
+                        <a href="/" class="language-switcher">{{ lang_code | upper }} ▾</a>
+                        <div class="lang-dropdown-content">
+                            {% set lang_map = {
+                                'fr': ('fr', 'Français'), 
+                                'en': ('gb', 'English'), 
+                                'es': ('es', 'Español'), 
+                                'it': ('it', 'Italiano'), 
+                                'de': ('de', 'Deutsch'), 
+                                'pt': ('pt', 'Português'), 
+                                'pl': ('pl', 'Polski')
+                            } %}
+                            {% for code, (flag_class, name) in lang_map.items() %}
+                                {% if current_page_name == 'home' %}
+                                    <a href="{{ url_for('home') if code == 'fr' else url_for('localized_home', lang_code=code) }}"
+                                       {% if lang_code == code %}class="active-lang"{% endif %}>
+                                        <span class="flag-icon flag-{{ flag_class }}"></span> {{ name }}
+                                    </a>
+                                {% else %}
+                                    <a href="{{ url_for('default_pages', page=current_page_name) if code == 'fr' else url_for('lang_routes.localized_pages', lang_code=code, page=current_page_name) }}"
+                                       {% if lang_code == code %}class="active-lang"{% endif %}>
+                                        <span class="flag-icon flag-{{ flag_class }}"></span> {{ name }}
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </li>
+                    <li>
+                        <div class="mode-switcher" onclick="toggleDarkMode(event)">☀️</div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hamburger-menu" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    // Theme ko page load hone par check aur apply karne ka function
+    function applySavedTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        const body = document.body;
+        const modeSwitcher = document.querySelector('.mode-switcher');
+        
+        if (savedTheme === 'dark-mode') {
+            body.classList.add('dark-mode');
+            // Ensure the correct icon is shown on load
+            if (modeSwitcher) {
+                modeSwitcher.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        } else {
+            body.classList.remove('dark-mode');
+            // Ensure the correct icon is shown on load (default is light)
+            if (modeSwitcher) {
+                modeSwitcher.innerHTML = '☀️';
+            }
+        }
+    }
+
+    // Toggle Dark Mode function ko update kiya gaya hai
+    function toggleDarkMode(event) {
+        // Prevent default action of an <a> tag if it was one, but we changed it to <div>, 
+        // still good practice to check if it was clicked via an event listener
+        if (event) {
+            event.preventDefault(); // Roke ga agar kisi link/form se call hua.
+            event.stopPropagation(); // Hamburger/Nav link close hone se roke ga.
+        }
+
+        const body = document.body;
+        const modeSwitcher = document.querySelector('.mode-switcher');
+
+        body.classList.toggle('dark-mode');
+
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark-mode'); // Theme save karein
+            modeSwitcher.innerHTML = '<i class="fas fa-moon"></i>';
+        } else {
+            localStorage.setItem('theme', 'light-mode'); // Theme save karein
+            modeSwitcher.innerHTML = '☀️';
+        }
+    }
+
+    function toggleMenu() {
+        const navLinks = document.getElementById('navLinks');
+        navLinks.classList.toggle('active');
+        closeAllDropdowns();
+    }
+    
+    function toggleDropdown(event, dropdownType) {
+        event.stopPropagation();
+        
+        const currentDropdown = event.currentTarget;
+        
+        // Close other dropdowns
+        const allDropdowns = document.querySelectorAll('.dropdown, .lang-dropdown');
+        allDropdowns.forEach(d => {
+            if (d !== currentDropdown) {
+                d.classList.remove('active');
+            }
+        });
+        
+        // Toggle the current one
+        currentDropdown.classList.toggle('active');
+    }
+
+    function closeAllDropdowns() {
+        const allDropdowns = document.querySelectorAll('.dropdown, .lang-dropdown');
+        allDropdowns.forEach(d => {
+            d.classList.remove('active');
+        });
+    }
+
+    document.addEventListener('click', function(event) {
+        const navLinks = document.getElementById('navLinks');
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        
+        // Agar click hamburger menu ya nav links par nahi hai, toh menu band kar do
+        if (!navLinks.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+            navLinks.classList.remove('active');
+            closeAllDropdowns();
+        }
+    });
+
+    // Page load hone par theme apply karein
+    document.addEventListener('DOMContentLoaded', applySavedTheme);
+    
+</script>
+
+</body>
+</html>

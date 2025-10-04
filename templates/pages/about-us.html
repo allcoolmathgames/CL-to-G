@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>About Us | ML to MG Converter</title>
+    <meta name="description" content="Learn about ML to MG Converter and our mission to simplify conversions." />
+    <link rel="canonical" href="https://mltomg.info/about-us" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .about-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: var(--card-background);
+            border-radius: 16px;
+            box-shadow: var(--shadow-medium);
+            text-align: center;
+        }
+        .about-container h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .about-container p {
+            color: var(--light-text-color);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .about-container .mission {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            text-align: left;
+        }
+        .about-container .contact-link {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .about-container .contact-link:hover {
+            background-color: #3ADBB9;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <header class="secondary-header">
+        <div class="container">
+            <h1>About Us</h1>
+            <p>Learn about ML to MG Converter and our mission.</p>
+        </div>
+    </header>
+    <div class="container main-content">
+        <div class="about-container">
+            <h1>About ML to MG Converter</h1>
+            <p>
+                Welcome to <strong>ML to MG Converter</strong>, your go-to resource for quick and accurate conversions between milliliters (mL) and milligrams (mg). Whether you're a chef, baker, scientist, or student, our tools are designed to simplify your calculations and save you time.
+            </p>
+
+            <div class="mission">
+                <h2>Our Mission</h2>
+                <p>Our mission is to provide easy-to-use, reliable conversion tools for everyone. We believe that accurate measurements should be accessible to all, without the hassle of complex calculations.</p>
+            </div>
+
+            <p>
+                Our <strong>mL to mg converter</strong> supports a wide range of substances, including water, milk, oil, flour, and sugar. We also offer additional tools for other common conversions, such as grams to liters and ounces to milliliters.
+            </p>
+
+            <p>
+                We are committed to continuously improving our tools and adding new features based on user feedback. Your satisfaction is our top priority!
+            </p>
+
+            <p>
+                Have questions or suggestions? We’d love to hear from you!
+            </p>
+
+            <a href="https://mltomg.info/contact" class="contact-link">Contact Us</a>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>Terms and Conditions | ML to MG Converter</title>
+    <meta name="description" content="Terms and conditions for using ML to MG Converter." />
+    <link rel="canonical" href="https://mltomg.info/terms-and-conditions" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .terms-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: var(--card-background);
+            border-radius: 16px;
+            box-shadow: var(--shadow-medium);
+        }
+        .terms-container h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .terms-container h2 {
+            color: var(--primary-color);
+            margin-top: 30px;
+        }
+        .terms-container p {
+            color: var(--light-text-color);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .terms-container ol, .terms-container ul {
+            margin: 15px 0 15px 20px;
+            color: var(--light-text-color);
+            line-height: 1.6;
+        }
+        .last-updated {
+            font-style: italic;
+            text-align: center;
+            color: var(--light-text-color);
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <header class="secondary-header">
+        <div class="container">
+            <h1>Terms and Conditions</h1>
+            <p>Please read these terms carefully before using our services.</p>
+        </div>
+    </header>
+    <div class="container main-content">
+        <div class="terms-container">
+            <h1>Terms and Conditions</h1>
+            <p>Welcome to <strong>ML to MG Converter</strong>. By accessing or using our website (<a href="https://mltomg.info">https://mltomg.info</a>), you agree to comply with and be bound by the following terms and conditions.</p>
+
+            <h2>1. Acceptance of Terms</h2>
+            <p>By using our website, you agree to these Terms and Conditions. If you do not agree, please do not use our services.</p>
+
+            <h2>2. Use of Our Services</h2>
+            <p>Our tools and content are provided for informational and educational purposes only. We do not guarantee the accuracy, completeness, or reliability of any information provided.</p>
+
+            <h2>3. Intellectual Property</h2>
+            <p>All content on this website, including text, graphics, logos, and tools, is the property of ML to MG Converter and is protected by copyright laws.</p>
+
+            <h2>4. User Responsibilities</h2>
+            <p>You agree to:</p>
+            <ul>
+                <li>Use our services for lawful purposes only.</li>
+                <li>Not reproduce, distribute, or modify our content without permission.</li>
+                <li>Not interfere with or disrupt our website or servers.</li>
+            </ul>
+
+            <h2>5. Disclaimer of Warranties</h2>
+            <p>Our services are provided "as is" without any warranties. We do not guarantee that our website will be error-free, uninterrupted, or secure.</p>
+
+            <h2>6. Limitation of Liability</h2>
+            <p>ML to MG Converter shall not be liable for any direct, indirect, or consequential damages arising from the use or inability to use our services.</p>
+
+            <h2>7. Changes to Terms</h2>
+            <p>We reserve the right to modify these Terms and Conditions at any time. Continued use of our website constitutes acceptance of the updated terms.</p>
+
+            <h2>8. Governing Law</h2>
+            <p>These terms shall be governed by and construed in accordance with the laws of [Your Country/State].</p>
+
+            <h2>9. Contact Us</h2>
+            <p>If you have any questions about these Terms and Conditions, please contact us at <a href="mailto:mltomg.info@gmail.com">mltomg.info@gmail.com</a>.</p>
+
+            <p class="last-updated">Last updated: September 13, 2025</p>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+</body>
+</html>

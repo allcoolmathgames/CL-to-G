@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Blogs | ML to MG Converter</title>
+    <meta name="description" content="Explore our blogs about conversions, kitchen tips, and measurement guides." />
+    <link rel="canonical" href="https://mltomg.info/blogs" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* Blog Cards Grid */
+        .blogs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        /* Blog Card Styling */
+        .blog-card {
+            background-color: var(--card-background);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .blog-card-content {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .blog-card h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .blog-card p {
+            color: var(--light-text-color);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .blog-card .read-more {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        .blog-card .read-more:hover {
+            background-color: #3ADBB9;
+        }
+
+        /* Header Styling */
+        .blogs-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .blogs-header h1 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .blogs-header p {
+            color: var(--light-text-color);
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <header class="secondary-header">
+        <div class="container">
+            <h1>Our Blogs</h1>
+            <p>Explore articles about conversions, kitchen tips, and more.</p>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <div class="blogs-header">
+            <h1>Latest Blog Posts</h1>
+            <p>Read our guides and tips to make your conversions easier.</p>
+        </div>
+
+        <div class="blogs-container">
+            <!-- Blog Card 1 -->
+            <article class="blog-card">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Kitchen Conversions Guide">
+                <div class="blog-card-content">
+                    <h3>Kitchen Conversion Guide: mL to mg for Common Ingredients</h3>
+                    <p>Learn how to convert milliliters to milligrams for water, milk, oil, flour, and sugar. Perfect for baking and cooking!</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+
+            <!-- Blog Card 2 -->
+            <article class="blog-card">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Density Explained">
+                <div class="blog-card-content">
+                    <h3>Understanding Density: Why It Matters in Conversions</h3>
+                    <p>Density is key to accurate conversions. Discover how it affects mL to mg calculations and why it varies for different substances.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+
+            <!-- Blog Card 3 -->
+            <article class="blog-card">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Baking Tips">
+                <div class="blog-card-content">
+                    <h3>Baking Tips: Measure Like a Pro</h3>
+                    <p>Get precise measurements for baking success. Learn how to use our converter for perfect cakes, cookies, and bread every time.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+
+            <!-- Blog Card 4 -->
+            <article class="blog-card">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Science Behind Conversions">
+                <div class="blog-card-content">
+                    <h3>The Science Behind mL to mg Conversions</h3>
+                    <p>Dive into the science of volume and mass. Understand the formulas and principles that make conversions possible.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+
+            <!-- Blog Card 5 -->
+            <article class="blog-card">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Common Mistakes">
+                <div class="blog-card-content">
+                    <h3>5 Common Conversion Mistakes and How to Avoid Them</h3>
+                    <p>Avoid errors in your recipes and experiments. Learn the most common mistakes people make when converting mL to mg.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+
+            <!-- Blog Card 6 -->
+            <article class="blog-card">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="DIY Conversions">
+                <div class="blog-card-content">
+                    <h3>DIY Conversions: No Tool? No Problem!</h3>
+                    <p>Don’t have a converter? Learn how to estimate mL to mg conversions at home using everyday objects.</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>
